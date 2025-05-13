@@ -167,6 +167,19 @@ tu_static usbd_class_driver_t const _usbd_driver[] = {
     },
     #endif
 
+    #if CFG_TUD_CCID
+    {
+        .name             = DRIVER_NAME("CCID"),
+        .init             = ccidd_init,
+        .deinit           = ccidd_deinit,
+        .reset            = ccidd_reset,
+        .open             = ccidd_open,
+        .control_xfer_cb  = ccidd_control_xfer_cb,
+        .xfer_cb          = ccidd_xfer_cb,
+        .sof              = NULL
+    },
+    #endif
+
     #if CFG_TUD_MSC
     {
         .name             = DRIVER_NAME("MSC"),
